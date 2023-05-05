@@ -9,8 +9,10 @@ GETTING STARTED
 To use the tool, you will need to have Python 3 installed on your computer. 
 PSFvisual requires the following libraries: numpy, PIL, astropy, matplotlib, and streamlit. 
 
-After installing the required libraries, you can launch the tool by running the following command while you are in the folder containing the PSF_Visual.py file:
+After installing the required libraries, you can launch the tool locally by running the following command while you are in the folder containing the PSF_Visual.py file:
 streamlit run PSF_Visual.py
+
+Or you can use the link found [here](https://psfvisual.streamlit.app/)
 
 This will launch the tool in your web browser.
 
