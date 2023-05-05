@@ -26,7 +26,9 @@ gauss_fit = fun.gauss1d(x,1,0,1.5)
 
 #title and content explanation
 st.markdown('## Gaussian Fitting')
-st.write('This section demonstrates how a gaussian function would be fitted to a non idealized PSF. If we had perfect measurement tools, we would only see the idealized psf. However, due to random noise from the measuring we get something that is closer to what is displayed below.')
+st.write('This section demonstrates how a gaussian function would be fitted to a non idealized PSF. If we had perfect \
+measurement tools, we would only see the idealized psf. However, due to random noise from the measuring we get something that \
+is closer to what is displayed below.')
 
 #options to display different fits
 model = st.checkbox('Show Gaussian Fit')

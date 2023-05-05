@@ -15,7 +15,10 @@ import functions as fun
 st.markdown('## Seeing')
 
 #page content explanation
-st.write('The above cases are scenarios where only the fundamental limits of diffraction impact the width of the point spread function. These are what are known as “diffraction limited PSF.” However, when you are observing using a ground based telescope, the effects of the atmosphere will play a large role in how well point sources can be resolved. These PSFs are known as “seeing limited” and are considerably wider compared to diffraction dominated ones.')
+st.write('The above cases are scenarios where only the fundamental limits of diffraction impact the width of the point spread \
+function. These are what are known as “diffraction limited PSF.” However, when you are observing using a ground based telescope, \
+the effects of the atmosphere will play a large role in how well point sources can be resolved. These PSFs are known as “seeing \
+limited” and are considerably wider compared to diffraction dominated ones.')
 
 #display image
 see_gif = Image.open('seeing.gif')
@@ -23,12 +26,18 @@ see_gif = see_gif.resize((882,150))
 st.image(see_gif, caption='the effects of seeing in an actual image')
 
 #page slider instructions
-st.write('Using the sliders below, you can adjust the wavelength, the diameter, as well as how poor the seeing conditions are to compare the shapes of the diffraction dominated PSF and seeing dominated PSF.')
+st.write('Using the sliders below, you can adjust the wavelength, the diameter, as well as how poor the seeing conditions are \
+to compare the shapes of the diffraction dominated PSF and seeing dominated PSF.')
 
-#create sliders
-seeing = st.slider('seeing conditions', 1.0, 3.0, step=0.1)
-gwavelen = st.slider("wavelength [nm] ", 200, 400, step=10)
-gaperdiam = st.slider("aperture diameter [m] ", 5, 30, step=1)
+
+#graph layout
+sliders,diff, see = st.columns(3)
+
+with sliders:
+    #create sliders
+    seeing = st.slider('seeing conditions', 1.0, 3.0, step=0.1)
+    gwavelen = st.slider("wavelength [nm] ", 200, 400, step=10)
+    gaperdiam = st.slider("aperture diameter [m] ", 5, 30, step=1)
 
 #create gaussian models
 xval = np.linspace(-10,10,100)
@@ -47,9 +56,6 @@ seegauss = fun.gauss1d(xval, 1, 0, seeratio*seeing) #seeing limited
 
 diff_airydisk = AiryDisk2DKernel(gratio*6, x_size=70, y_size=70) #diffraction limited
 see_airydisk = AiryDisk2DKernel(seeratio*6*seeing, x_size=70, y_size=70) #seeing limited
-
-#graph layout
-diff, see = st.columns(2)
 
 with diff:
     fig5, ax = plt.subplots(figsize=(5,5))
@@ -82,13 +88,19 @@ with see:
     
 #title and content explanation    
 st.markdown('## Seeing and Rayleigh Criterion')
-st.write('Using the sliders below, you can adjust the wavelength, the aperture diameter, the angular distance between sources, as well as how poor the seeing conditions are to compare angular resolution limits for diffraction dominated and seeing dominated PSF.')
+st.write('Using the sliders below, you can adjust the wavelength, the aperture diameter, the angular distance between sources, \
+as well as how poor the seeing conditions are to compare angular resolution limits for diffraction dominated and seeing \
+dominated PSF.')
 
-#create sliders
-swavelen = st.slider("wavelength of both sources [nm] ", 200, 400, step=10)
-saperdiam = st.slider("aperture diameter detecting both [m] ", 5, 30, step=1)
-seeing2d = st.slider('seeing conditions ', 1.0, 3.0, step=0.1)
-sdist = st.slider('distance between sources ',0.4, 10.0, step=.2)
+#graph layout
+sliders2d, diff2d, see2d = st.columns(3)
+
+with sliders2d:
+    #create sliders
+    swavelen = st.slider("wavelength of both sources [nm] ", 200, 400, step=10)
+    saperdiam = st.slider("aperture diameter detecting both [m] ", 5, 30, step=1)
+    seeing2d = st.slider('seeing conditions ', 1.0, 3.0, step=0.1)
+    sdist = st.slider('distance between sources ',0.4, 10.0, step=.2)
 
 #create psf gaussian model
 sratio = swavelen/(10*saperdiam)
@@ -112,8 +124,7 @@ twosairies = fun.two_airies(dseeratio, sdist, seeing=(seeing2d*.65))
 #airy disks diffraction limited only
 qtwosairies = fun.two_airies(sratio, sdist) 
 
-#graph layout
-diff2d, see2d = st.columns(2)
+
 
 with diff2d:
     fig11, ax = plt.subplots(figsize=(5,5))
@@ -144,4 +155,6 @@ with see2d:
     st.pyplot(fig9)
 
 #content note
-st.write('You will notice that after a certain point, a larger aperture diameter does not help resolution for seeing dominated PSF. However, we still build ground based telescopes with larger and larger diameters because techniques like adaptive optics help us overcome seeing limitations.')
+st.write('You will notice that after a certain point, a larger aperture diameter does not help resolution for seeing dominated \
+PSF. However, we still build ground based telescopes with larger and larger diameters because techniques like adaptive optics \
+help us overcome seeing limitations.')

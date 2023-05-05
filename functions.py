@@ -30,6 +30,7 @@ def gauss1d(x, peak, mu, sig):
       -----
       requires numpy
     '''
+    
     return peak*np.exp(-1.*(x-mu)**2/(2.*sig**2))
 
 
@@ -63,6 +64,7 @@ def dgauss(x, peak1, mu1, sig1, peak2, mu2, sig2):
       -----
       requires numpy
     '''
+    
     return peak1*np.exp(-1.*(x-mu1)**2/(2.*sig1**2)) + peak2*np.exp(-1.*(x-mu2)**2/(2.*sig2**2))
 
 

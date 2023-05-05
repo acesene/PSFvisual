@@ -14,10 +14,16 @@ import functions as fun
 #Titles and content explanation
 st.markdown('## Point Spread Function')
 
-st.write('We can measure the brightness of light sources at each pixel it occupies, to see how quickly it dims as you move away from the central point. The resulting graph is called a Point Spread Function (PSF) [see below]. The shape, in partiulcar the width of the peak, of the PSF can tell you how precisely the telescope is measuring your souces. The wider the PSF, the more diffraction is impacting it, and the less precise the data is. The width of the point spread function depends on the wavelength of incoming light and the size of the telescope aperture used. To minimize the effects of diffraction, we want a larger telescope aperture, which will show a narrower point spread function.')
+st.write('We can measure the brightness of light sources at each pixel it occupies, to see how quickly it dims as you move \
+away from the central point. The resulting graph is called a Point Spread Function (PSF) [see below]. The shape, in partiulcar \
+the width of the peak, of the PSF can tell you how precisely the telescope is measuring your souces. The wider the PSF, the more \
+diffraction is impacting it, and the less precise the data is. The width of the point spread function depends on the wavelength \
+of incoming light and the size of the telescope aperture used. To minimize the effects of diffraction, we want a larger \
+telescope aperture, which will show a narrower point spread function.')
 
 #interactive graph use instructions
-st.write('Using the sliders below you can adjust the wavelength and telescope aperture diameter to see how it affects the shape of the point spread function. The simulations here only take into account the central point and not the rings of the airy disk.')
+st.write('Using the sliders below you can adjust the wavelength and telescope aperture diameter to see how it affects the shape \
+of the point spread function. The simulations here only take into account the central point and not the rings of the airy disk.')
 
 
 #create sliders 
